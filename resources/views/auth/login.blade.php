@@ -32,17 +32,21 @@
     <![endif]-->
 
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background:#1D1954">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+        <img src="{{ asset('public/uploads/images/logo/oranpo.png') }}">
     </div>
 
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">@lang('auth.login.title')</p>
-
-        <form method="post" action="{{ url('/login') }}">
+        @if (Session::has('success'))
+            <div class="alert alert-danger">
+                <i class="fa fa-times-circle"></i> {{ Session::get('success') }}
+            </div>
+        @endif
+        <form method="post" action="{{ route('admin-login') }}">
             @csrf
 
             <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
@@ -69,7 +73,7 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember"> @lang('auth.remember_me')
+                            {{-- <input type="checkbox" name="remember"> @lang('auth.remember_me') --}}
                         </label>
                     </div>
                 </div>
@@ -81,8 +85,8 @@
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">@lang('auth.login.forgot_password')</a><br>
-        <a href="{{ url('/register') }}" class="text-center">@lang('auth.login.register_membership')</a>
+        <!-- <a href="{{ url('/password/reset') }}">@lang('auth.login.forgot_password')</a><br>
+        <a href="{{ url('/register') }}" class="text-center">@lang('auth.login.register_membership')</a> -->
 
     </div>
     <!-- /.login-box-body -->
