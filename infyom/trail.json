@@ -1,0 +1,47 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": "",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "title",
+        "dbType": "string,255",
+        "htmlType": "text",
+        "validations": "required,max:250,min:3",
+        "fillable": true,
+        "searchable": true
+    },
+    {
+        "name": "short_description",
+        "dbType": "string,255",
+        "htmlType": "text",
+        "validations": "required,max:255,min:3",
+        "fillable": true,
+        "searchable": true
+    },
+    {
+        "name": "short_description",
+        "dbType": "string,255:default,''",
+        "htmlType": "text",
+        "validations": "required,max:255,min:3",
+        "fillable": true,
+        "searchable": true
+    },
+    {
+        "name": "trail_type",
+        "dbType": "tinyInteger,255:default,''",
+        "htmlType": "text",
+        "validations": "required,max:255,min:3",
+        "fillable": true,
+        "searchable": true
+    },
+
+]

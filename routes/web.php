@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+//Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('admin',[App\Http\Controllers\Auth\LoginController::class,'showLoginForm']);
+Route::match(['get','post'],'login',[App\Http\Controllers\Auth\LoginController::class,'login'])->name('admin-login');
+Route::get('logout',[App\Http\Controllers\Auth\LoginController::class,'logout']);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
