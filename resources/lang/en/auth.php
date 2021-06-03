@@ -30,5 +30,10 @@ return [
     'registration.have_membership' => 'Already Registered',
     'register' => 'Register',
     'registration.title' => 'Registration',
-    'app.search' => 'Search'
+    'app' => [
+        'search' => 'Search',
+        'changePassword' => 'Change Password',
+        'online' => 'Oranpo',
+    ],
+    'sign_out' => 'Sign Out',
 ];

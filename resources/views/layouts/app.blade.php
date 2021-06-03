@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ config('app.name') }}</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
@@ -22,8 +22,7 @@
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 
     @yield('css')
 </head>
@@ -35,8 +34,8 @@
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
-                <b>InfyOm</b>
+            <a href="{{ url('home') }}" class="logo">
+                <b><img src="{{ asset('public/uploads/images/logo/oranpo.png') }}" width="112px"></b>
             </a>
 
             <!-- Header Navbar -->
@@ -51,31 +50,27 @@
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
                             <!-- Menu Toggle Button -->
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <a href="{{ url('home') }}" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src="{{ asset('public/uploads/images/logo/logo.png') }}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                                <span class="hidden-xs">{{ Auth::user()->username }}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src="{{ asset('public/uploads/images/logo/logo.png') }}"
                                          class="img-circle" alt="User Image"/>
-                                    <p>
-                                        {{ Auth::user()->name }}
-                                        <small>@lang('auth.app.member_since') {{ Auth::user()->created_at->format('M. Y') }}</small>
-                                    </p>
+                                    <p>@lang('auth.app.online')</p>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">@lang('auth.app.profile')</a>
+                                        <a href="{{ route('admin-change-password') }}" class="btn btn-default btn-flat">@lang('auth.app.changePassword')</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">
                                             @lang('auth.sign_out')
                                         </a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST"
@@ -100,7 +95,7 @@
 
         <!-- Main Footer -->
         <footer class="main-footer" style="max-height: 100px;text-align: center">
-            <strong>Copyright © 2016 <a href="#">Company</a>.</strong> All rights reserved.
+            <strong>Copyright © <a href="{{ url('home') }}">Oranpo</a>.</strong> All rights reserved.
         </footer>
 
     </div>
