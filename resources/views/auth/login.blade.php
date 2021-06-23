@@ -46,7 +46,7 @@
                 <i class="fa fa-times-circle"></i> {{ Session::get('success') }}
             </div>
         @endif
-        <form method="post" action="{{ route('admin-login') }}">
+        <form method="post" action="">
             @csrf
 
             <div class="form-group has-feedback {{ $errors->has('email') ? ' has-error' : '' }}">
