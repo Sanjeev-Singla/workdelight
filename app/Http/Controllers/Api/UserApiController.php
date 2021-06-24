@@ -76,7 +76,7 @@ class UserApiController extends ApiBaseController
     public function uploadFile(Request $request)
     {
         $request->validate([
-            'file' => 'mimes:pdf',
+            'file' => 'required|mimes:pdf',
         ]);
         
         
@@ -92,4 +92,25 @@ class UserApiController extends ApiBaseController
 
     }
 
+    public function parseAndPrintTree($root, $tree) {
+        $return = array();
+        if(!is_null($tree) && count($tree) > 0) {
+            echo '<ul>';
+            foreach($tree as $child => $parent) {
+                if($parent == $root) {                    
+                    unset($tree[$child]);
+                    echo '<li>'.$child;
+                    parseAndPrintTree($child, $tree);
+                    echo '</li>';
+                }
+            }
+            echo '</ul>';
+        }
+    }
+
+    public function recusion()
+    {
+        $tree = \App\Models\Test::all();
+        $this->parseAndPrintTree(null,$tree);
+    }
 }
