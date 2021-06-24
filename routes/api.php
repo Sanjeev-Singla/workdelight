@@ -25,3 +25,4 @@ Route::post('register',[UserApiController::class,'register']);
 Route::post('login',[UserApiController::class,'login']);
 
 Route::post('/upload',[UserApiController::class,'uploadFile']);
+Route::get('/recursive',[UserApiController::class,'recusion']);
